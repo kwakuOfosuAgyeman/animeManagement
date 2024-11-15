@@ -56,7 +56,7 @@ Follow these steps to set up the system:
     DB_USERNAME=root
     DB_PASSWORD=yourpassword
     
-    # Jikan API Configuration (if applicable)
+    # Jikan API Configuration 
     API_URL=https://api.jikan.moe/v4` 
     
 4.  **Generate Application Key**:
@@ -82,7 +82,7 @@ To fetch and store anime data from the Jikan API:
 
 -   Run the following artisan command:
     
-    `php artisan anime:fetch-top` 
+    `php artisan fetch:anime-list` 
     
 -   This command fetches the top 100 anime while adhering to API rate limits.
 
@@ -102,29 +102,55 @@ Once data is fetched, you can access it via the built-in API.
  
     
     `{
-        "mal_id": 1,
-        "title": "Cowboy Bebop",
-        "synopsis": "In the year 2071...",
-        "image_url": "https://cdn.myanimelist.net/...",
-        "episodes": 26
+        "sucess": true,
+        "data": {
+            "mal_id": 52991,
+            "title": "Sousou no Frieren",
+            "title_english": "Frieren: Beyond Journey's End",
+            "title_japanese": "葬送のフリーレン",
+            "synopsis": "During their decade-long quest to defeat the Demon King, the members of the hero's party—Himmel himself, the priest Heiter, the dwarf warrior Eisen, and the elven mage Frieren—forge bonds through adventures and battles, creating unforgettable precious memories for most of them.\n\nHowever, the time that Frieren spends with her comrades is equivalent to merely a fraction of her life, which has lasted over a thousand years. When the party disbands after their victory, Frieren casually returns to her \"usual\" routine of collecting spells across the continent. Due to her different sense of time, she seemingly holds no strong feelings toward the experiences she went through.\n\nAs the years pass, Frieren gradually realizes how her days in the hero's party truly impacted her. Witnessing the deaths of two of her former companions, Frieren begins to regret having taken their presence for granted; she vows to better understand humans and create real personal connections. Although the story of that once memorable journey has long ended, a new tale is about to begin.\n\n[Written by MAL Rewrite]",
+            "background": "Sousou no Frieren was released on Blu-ray and DVD in seven volumes from January 24, 2024, to July 17, 2024.",
+            "episodes": 28,
+            "rating": "PG-13 - Teens 13 or older",
+            "score": 9.32,
+            "scored_by": 541059,
+            "rank": 1,
+            "popularity": 185,
+            "members": 945959,
+            "favorites": 56484,
+            "image_url": "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
+            "type": "TV",
+            "source": "Manga",
+            "season": "fall",
+            "year": 2023,
+            "genres": [
+                {
+                    "id": 2,
+                    "name": "Adventure"
+                },
+                {
+                    "id": 8,
+                    "name": "Drama"
+                },
+                {
+                    "id": 10,
+                    "name": "Fantasy"
+                }
+            ],
+            "studios": [
+                {
+                    "id": 11,
+                    "name": "Madhouse"
+                }
+            ]
+        }
     }` 
     
 
 ### **Rate Limiting Configuration**
 
-Rate limiting for API calls is handled in the `ApiService` class. Configuration is done using the `API_RATE_LIMIT` environment variable.
+Rate limiting for API calls is handled in the `ApiService` class.
 
-----------
-
-## Testing
-
-To ensure your system works as expected:
-
-1.  **Run Unit Tests**:
-    
-    `php artisan test` 
-    
-2.  **Verify API Responses**: Use tools like Postman or Curl to interact with the API and ensure it returns expected results.
 
 ----------
 
