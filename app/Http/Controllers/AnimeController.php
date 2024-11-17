@@ -18,25 +18,9 @@ class AnimeController extends Controller
         $this->apiService = $apiService;
     }
 
-    public function show($slug): JsonResponse
+    public function show(Anime $anime): JsonResponse
     {
-        if (!preg_match('/^[a-z0-9-]+$/', $slug)) {
-            return response()->json([
-                'success' => false,
-                'error' => 'Invalid slug format.'
-            ], 400);
-        }
         try {
-            $anime = Anime::where('slug', $slug)->first();
-
-            if (!$anime) {
-                Log::warning('Anime not found', ['slug' => $slug]);
-                return response()->json([
-                    'success' => false,
-                    'error' => 'Anime not found',
-                    'message' => "No anime found with the slug: {$slug}"
-                ], 404);
-            }
 
             return response()->json([
                 'sucess' => true,

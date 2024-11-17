@@ -33,4 +33,9 @@ class Anime extends Model
         'genres',
         'studios'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
