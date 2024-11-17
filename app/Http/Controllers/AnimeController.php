@@ -20,6 +20,12 @@ class AnimeController extends Controller
 
     public function show($slug): JsonResponse
     {
+        if (!preg_match('/^[a-z0-9-]+$/', $slug)) {
+            return response()->json([
+                'success' => false,
+                'error' => 'Invalid slug format.'
+            ], 400);
+        }
         try {
             $anime = Anime::where('slug', $slug)->first();
 
