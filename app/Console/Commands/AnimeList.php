@@ -57,6 +57,7 @@ class AnimeList extends Command
                     break;
                 }
                 $page++;
+                sleep(1 / 3); //Ensures max 3 attempts per second
             }
 
 
