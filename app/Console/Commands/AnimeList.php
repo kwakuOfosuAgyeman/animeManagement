@@ -44,7 +44,7 @@ class AnimeList extends Command
             while(count($allAnimes) < 100) {
                 $this->info("Fetching page {$page}...");
                 // Fetching the anime data
-                $response = $this->apiService->fetchData('top/anime', ['limit' => 25, 'page' => 1]);
+                $response = $this->apiService->fetchData('top/anime', ['limit' => 25, 'page' => $page]);
                 $animes = $response['data'] ?? [];
 
                 if (empty($animes)) {
@@ -62,7 +62,7 @@ class AnimeList extends Command
 
 
             // Loop through each anime and update or create
-            foreach ($animes as $anime) {
+            foreach ($allAnimes as $anime) {
                 $sanitizedAnime = $this->sanitizeAnimeData($anime);
                 try {
                     Anime::updateOrCreate(
